@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#1d2b64,#f8cdda);
+  color:white;
+  overflow:hidden;
+}
+
+/* PAGE */
+.page{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+  animation:fade 0.8s ease;
+}
+.page.active{display:flex}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:3rem;
+  margin-bottom:10px;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px white}
+  to{text-shadow:0 0 30px pink}
+}
+
+p{max-width:600px;font-size:1.2rem}
+
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4b5c;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{transform:scale(1.1)}
+
+img{
+  width:240px;
+  border-radius:20px;
+  margin:20px 0;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(100vh);opacity:0}
+}
+
+/* TYPE */
+.type{border-right:2px solid white;white-space:nowrap;overflow:hidden}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+<h1>Hiiiieeeee, cutieeeee pieeeeeee meri nanhi si pyari si jaaan❤️</h1>
+<img src="her1.1.jpeg">
+<p class="type" id="type"></p>
+<button onclick="next(2)">Next</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<h1>You ✨</h1>
+<img src="her1.2.jpeg"
+<p>yrrr dekhooo apki tarif me to kya hi boluuu bas me itni sunder itni pyariiii itni cuteee si itni sweeett to aap😌</p>
+<button onclick="next(3)">Next</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+<h1>Moments Of Truth💭</h1>
+<p>I smile a lot more these days… because becauseee you’re the reason  meri nanhi si pyari si jaann 💖</p>
+<img src="her1.3.jpeg">
+<button onclick="next(4)">Next</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+<h1>For You 💫</h1>
+<img src="her1.4.jpeg"
+<p>
+yrrr you knoww tu kitni special h you are just like a person who deserve everyone means everyone to kabhi apne aap ko down mat hone dena or kabhi sad nhi honaaa cutieeee ❤️
+</p>
+<button onclick="next(5)">Next</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="p5">
+  <img src="her5.jpeg"
+<h1>बस यही 😏</h1>
+<p>KE TERI KHOOBSURTI SE WAHA CHAND RUTHA BETHA H MENE TUJHE HI MANGA JAB BHI TOOT TA TAARA DEKHA 
+  TUJH SA KHOOBSURAT KOI NI YAHA YAKKEN MAAN MANE PURA BAAGH DEKHA H.......
+</H1>💕</p>
+<button onclick="alert('CHAL AB EK ACCHI SI BADI SI SMILE KARDEEEE 😊')">Done</button>
+</div>
+
+<script>
+let current=1;
+function next(n){
+  document.getElementById('p'+current).classList.remove('active');
+  document.getElementById('p'+n).classList.add('active');
+  current=n;
+}
+
+// TYPEWRITER
+let text="Was thinking about you… so made this 😌";
+let i=0;
+(function type(){
+ if(i<text.length){
+  document.getElementById('type').innerHTML+=text[i++];
+  setTimeout(type,40);
+ }
+})();
+
+// HEARTS
+setInterval(()=>{
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerText='❤️';
+ h.style.left=Math.random()*100+'vw';
+ h.style.animationDuration=(Math.random()*3+2)+'s';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),5000);
+},300);
+</script>
+
+</body>
+</html>
